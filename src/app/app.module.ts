@@ -6,6 +6,7 @@ import { RouterModule }  from '@angular/router';
 import { AppComponent } from './app.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroesComponent } from './heroes.component';
+import { DashboardComponent } from './dashboard.component';
 import { HeroService } from './hero.service';
 
 
@@ -13,7 +14,8 @@ import { HeroService } from './hero.service';
   declarations: [
     AppComponent,
     HeroDetailComponent,
-    HeroesComponent
+    HeroesComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,9 +23,19 @@ import { HeroService } from './hero.service';
     HttpModule,
     RouterModule.forRoot([
       {
+        path: '',
+        redirectTo: '/dashboard',
+        pathMatch: 'full'
+      },
+      {
         path: 'heroes',
         component: HeroesComponent
-      }
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+
     ])
   ],
   providers: [HeroService],
